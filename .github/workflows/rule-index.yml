@@ -1,0 +1,17 @@
+name: Rule index
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify rule index
+        run: python3 scripts/generate_rule_index.py --check
